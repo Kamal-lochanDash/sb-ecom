@@ -1,6 +1,15 @@
 package com.ecommerce.project.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import org.springframework.context.annotation.Primary;
+
+@Entity(name = "categories")
 public class Category {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
     private String categoryName;
 
@@ -11,6 +20,11 @@ public class Category {
                 ", categoryName='" + categoryName + '\'' +
                 '}';
     }
+
+    public Category(){
+        //for jpa
+    }
+
 
     public Category(Long categoryId, String categoryName) {
         this.categoryId = categoryId;
@@ -29,7 +43,7 @@ public class Category {
         return categoryName;
     }
 
-    public void setCategoryName(String categoryName) {
+    public void setCategoryName(String categoryName)  {
         this.categoryName = categoryName;
     }
 }
